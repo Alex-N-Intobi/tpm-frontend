@@ -1,0 +1,32 @@
+<h2 class="content-block">Projects</h2>
+
+<dx-data-grid
+    keyExpr="id"
+    [dataSource]="projects"
+    [allowColumnReordering]="true"
+    [columnAutoWidth]="true"
+    [showBorders]="true"
+    [columnHidingEnabled]="true"
+    (onRowInserting)="onProjectRowChanged($event, 'add')"
+    (onRowUpdating)="onProjectRowChanged($event, 'update')"
+    (onRowRemoving)="onProjectRowChanged($event, 'delete')"
+>
+    <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-pager
+        [showPageSizeSelector]="true"
+        [showInfo]="true"
+    ></dxo-pager>
+    <dxo-editing
+        mode="row"
+        [allowUpdating]="true"
+        [allowDeleting]="true"
+        [allowAdding]="true"
+        [confirmDelete]="true"
+    >
+    </dxo-editing>
+
+    <dxi-column dataField="name">
+    </dxi-column>
+    <dxi-column dataField="description">
+    </dxi-column>
+</dx-data-grid>

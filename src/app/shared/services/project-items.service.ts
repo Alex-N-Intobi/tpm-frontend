@@ -3,35 +3,30 @@ import { Observable } from 'rxjs';
 import { ApiService } from './base/api.service';
 import { Project } from '../models/project.model';
 import { Pageable } from '../models/pageable.model';
-import { ProjectItem } from '../models/project-item.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectsService {
+export class ProjectItemsService {
   constructor(private api: ApiService) {}
 
   delete(id: number): Observable<void> {
-    return this.api.delete('projects', id.toString());
+    return this.api.delete('projectItems', id.toString());
   }
 
   update(id: number, request: Project): Observable<Project> {
-    return this.api.put(`projects/${id}`, request);
+    return this.api.put(`projectItems/${id}`, request);
   }
 
   create(request: Project): Observable<Project> {
-    return this.api.post('projects', request);
+    return this.api.post('projectItems', request);
   }
 
   get(id: number): Observable<Project> {
-    return this.api.get(`projects/${id}`);
-  }
-
-  getItems(id: number): Observable<ProjectItem[]> {
-    return this.api.get(`projects/${id}/items`);
+    return this.api.get(`projectItems/${id}`);
   }
 
   getAll(): Observable<Pageable<Project>> {
-    return this.api.get(`projects`);
+    return this.api.get(`projectItems`);
   }
 }

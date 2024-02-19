@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 import { User } from '../models/user.model';
 
-const defaultPath = '/home';
+const defaultPath = '/projects';
 
 @Injectable()
 export class AuthService {

@@ -8,18 +8,18 @@ import {
 } from './shared/components';
 import { AuthGuardService } from './shared/services';
 import { TasksComponent } from './pages/tasks/tasks.component';
-import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
+import { DxButtonModule, DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { ProjectsComponent } from './pages/projects/projects.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: TasksComponent,
+    path: 'projects',
+    component: ProjectsComponent,
     canActivate: [AuthGuardService],
   },
   {
-    path: 'projects',
-    component: ProjectsComponent,
+    path: 'projects/:id/tasks',
+    component: TasksComponent,
     canActivate: [AuthGuardService],
   },
   {
@@ -44,15 +44,16 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: 'projects',
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes, { useHash: false }),
     DxDataGridModule,
     DxFormModule,
+    DxButtonModule
   ],
   providers: [AuthGuardService],
   exports: [RouterModule],

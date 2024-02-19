@@ -1,0 +1,92 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ id == null ? 'Add' : 'Edit' }} Item</h4>
+    <button
+        type="button"
+        class="close"
+        aria-label="close"
+        (click)="activeModal.dismiss()"
+    >
+        <span aria-hidden="true"></span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <dx-form [(formData)]="data">
+        <dxi-item
+            dataField="name"
+            caption="Subject"
+        >
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            dataField="description"
+            editorType="dxTextArea"
+        >
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            dataField="assignedUserId"
+            editorType="dxSelectBox"
+            [editorOptions]="{
+                        items: users,
+                        displayExpr: 'name',
+                        valueExpr:'id'
+                    }"
+        >
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            dataField="type"
+            editorType="dxSelectBox"
+            [editorOptions]="{
+                items: types,
+            }"
+        >
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            dataField="priority"
+            editorType="dxSelectBox"
+            [editorOptions]="{
+                items: priorities,
+            }"
+        >
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            dataField="status"
+            editorType="dxSelectBox"
+            [editorOptions]="{
+                items: statuses,
+            }"
+        >
+            <dxi-validation-rule type="required"></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+            dataType="datetime"
+            dataField="deliveryDate"
+            editorType="dxDateBox"
+            [editorOptions]="{
+                type: 'datetime'
+            }"
+        >
+        </dxi-item>
+    </dx-form>
+</div>
+
+<div class="modal-footer">
+    <button
+        type="button"
+        class="btn btn-success btn-upper"
+        (click)="save()"
+    >
+        SAVE
+    </button>
+    <button
+        type="button"
+        class="btn btn-outline-primary btn-upper"
+        (click)="activeModal.dismiss()"
+    >
+        Cancel
+    </button>
+</div>

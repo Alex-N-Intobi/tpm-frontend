@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/shared/models/project.model';
 import { ProjectsService } from '../../shared/services/projects.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
+import { ProjectItemsService } from 'src/app/shared/services/project-items.service';
 
 @Component({
   selector: 'app-projects',
@@ -13,7 +15,8 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private projectService: ProjectsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.getProjects();
@@ -25,6 +28,14 @@ export class ProjectsComponent implements OnInit {
         this.projects = response.data;
       },
     });
+  }
+
+  onRowClicked(event: any) {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['projects', event.data.id, 'tasks'])
+    );
+
+    window.open(url, '_blank');
   }
 
   onProjectRowChanged(event: any, action: 'add' | 'delete' | 'update') {

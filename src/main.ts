@@ -1,3 +1,5 @@
+/// <reference types="@angular/localize" />
+
 import themes from 'devextreme/ui/themes';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 

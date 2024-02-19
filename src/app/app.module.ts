@@ -9,11 +9,16 @@ import { UnauthenticatedContentModule } from './unauthenticated-content';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditTaskModalComponent } from './pages/tasks/edit-task-modal/edit-task-modal.component';
+import { DxButtonModule, DxFormModule, DxTextAreaModule } from 'devextreme-angular';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EditTaskModalComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     SideNavOuterToolbarModule,
     SideNavInnerToolbarModule,
     SingleCardModule,
@@ -26,6 +31,9 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    NgbModule,
+    DxFormModule,
+    DxTextAreaModule
   ],
   providers: [AuthService, ScreenService, AppInfoService],
   bootstrap: [AppComponent],

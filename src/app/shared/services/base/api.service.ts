@@ -7,12 +7,10 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class ApiService {
-  endpoint: string;
+  endpoint: string = 'https://localhost:7277/api';
   headers: any;
 
-  constructor(private http: HttpClient, private cookieService: CookieService) {
-    this.endpoint = 'https://localhost:7277/api';
-  }
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   private setHeaders() {
     this.headers = new HttpHeaders();

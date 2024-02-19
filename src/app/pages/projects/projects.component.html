@@ -7,20 +7,21 @@
     [columnAutoWidth]="true"
     [showBorders]="true"
     [columnHidingEnabled]="true"
+    [hoverStateEnabled]="true"
     (onRowInserting)="onProjectRowChanged($event, 'add')"
     (onRowUpdating)="onProjectRowChanged($event, 'update')"
     (onRowRemoving)="onProjectRowChanged($event, 'delete')"
+    (onRowClick)="onRowClicked($event)"
 >
     <dxo-paging [pageSize]="10"></dxo-paging>
+    <dxo-selection mode="single"></dxo-selection>
     <dxo-pager
         [showPageSizeSelector]="true"
         [showInfo]="true"
     ></dxo-pager>
     <dxo-editing
         mode="row"
-        [allowUpdating]="true"
         [allowDeleting]="true"
-        [allowAdding]="true"
         [confirmDelete]="true"
     >
     </dxo-editing>

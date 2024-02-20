@@ -14,14 +14,8 @@
     <dx-form [(formData)]="data">
         <dxi-item
             dataField="name"
-            caption="Subject"
         >
-            <dxi-validation-rule type="required"></dxi-validation-rule>
-        </dxi-item>
-        <dxi-item
-            dataField="description"
-            editorType="dxTextArea"
-        >
+        <dxo-label text="Subject"> </dxo-label>
             <dxi-validation-rule type="required"></dxi-validation-rule>
         </dxi-item>
         <dxi-item
@@ -36,40 +30,56 @@
             <dxi-validation-rule type="required"></dxi-validation-rule>
         </dxi-item>
         <dxi-item
-            dataField="type"
-            editorType="dxSelectBox"
-            [editorOptions]="{
+            itemType="group"
+            [colCount]="2"
+        >
+            <dxi-item
+                dataField="type"
+                editorType="dxSelectBox"
+                [editorOptions]="{
                 items: types,
             }"
-        >
-            <dxi-validation-rule type="required"></dxi-validation-rule>
-        </dxi-item>
-        <dxi-item
-            dataField="priority"
-            editorType="dxSelectBox"
-            [editorOptions]="{
+            >
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item
+                dataField="priority"
+                editorType="dxSelectBox"
+                [editorOptions]="{
                 items: priorities,
             }"
-        >
-            <dxi-validation-rule type="required"></dxi-validation-rule>
+            >
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
         </dxi-item>
         <dxi-item
-            dataField="status"
-            editorType="dxSelectBox"
-            [editorOptions]="{
+            itemType="group"
+            [colCount]="2"
+        >
+            <dxi-item
+                dataField="status"
+                editorType="dxSelectBox"
+                [editorOptions]="{
                 items: statuses,
             }"
-        >
-            <dxi-validation-rule type="required"></dxi-validation-rule>
-        </dxi-item>
-        <dxi-item
-            dataType="datetime"
-            dataField="deliveryDate"
-            editorType="dxDateBox"
-            [editorOptions]="{
+            >
+                <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-item>
+            <dxi-item
+                dataType="datetime"
+                dataField="deliveryDate"
+                editorType="dxDateBox"
+                [editorOptions]="{
                 type: 'datetime'
             }"
+            ></dxi-item>
+        </dxi-item>
+        <dxi-item
+            dataField="description"
+            editorType="dxTextArea"
         >
+            <dxo-label text="Notes"> </dxo-label>
+            <dxi-validation-rule type="required"></dxi-validation-rule>
         </dxi-item>
     </dx-form>
 </div>
